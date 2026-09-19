@@ -1,33 +1,60 @@
-## Lib
+
+## Stack & Library
 - **HTML5** untuk struktur semantik.
 - **Tailwind CSS v3 (via CDN)** untuk styling responsif dan utilitas CSS yang cepat.
 - **Vanilla JavaScript** untuk logika interaktif (Countdown, Copy Link, Filter Kategori).
 - **Font Awesome 6** untuk ikon-ikon vektor.
-- **Google Fonts** (Cinzel, Playfair Display, Plus Jakarta Sans, Great Vibes).
+- **Google Fonts** (Cinzel, Playfair Display, Plus Jakarta Sans, Great Vibes, dll).
 
 ## Struktur
-```
+```text
 .
 ├── index.html           # Entry point / halaman utama website
 ├── vercel.json          # Konfigurasi deployment untuk Vercel
 ├── css/
 │   └── style.css        # Custom CSS (animasi, custom background, dll)
-└── js/
-    ├── script.js        # Logika Countdown Timer, Toast, Share, dan Filter
-    └── tailwind.config.js # Konfigurasi kustom tema warna dan font Tailwind
+├── js/
+│   ├── script.js        # Logika Countdown Timer, Toast, Share, dan Filter
+│   └── tailwind.config.js # Konfigurasi kustom tema warna dan font Tailwind
+└── img/                 # Folder gambar untuk logo dan aset
+    ├── kwarda.png
+    ├── logo.png
+    ├── pramuka.png
+    ├── racanaunsri.png
+    ├── unsri.png
+    └── wosm.png
 ```
 
 ## Maintenance
 
-### 1. Ubah Tanggal Countdown Timer
-Buka `js/script.js` dan cari fungsi `initCountdown()`. Ubah bagian ini sesuai dengan tanggal target pembukaan acara:
+### 1. Gambar & Logo Bagian Atas
+Jejeran logo di bagian paling atas bergantung pada file gambar yang ada di folder `img/`. Pastikan nama file berikut ada di dalam folder agar logo tidak rusak:
+- `unsri.png`
+- `wosm.png`
+- `pramuka.png` (Tunas Kelapa)
+- `kwarda.png` (Kwarda Sumsel)
+- `racanaunsri.png`
+- `logo.png` (Logo Utama SYC)
+
+### 2. Ubah Tanggal Countdown Timer
+Buka `js/script.js` dan cari fungsi `initCountdown()`. Ubah `targetDate` sesuai dengan tanggal target:
 ```javascript
-// Contoh untuk menetapkan tanggal statis: 20 Oktober 2026 jam 08:00
-const targetDate = new Date('2026-10-20T08:00:00');
+const targetDate = new Date('2026-10-17T09:00:00');
 ```
 
-### 2. Menambah / Mengubah Link
-Buka `index.html` dan cari bagian dengan komentar `<!-- BEGIN: Link Hub Interactive Cards -->`. 
-Setiap link dibungkus dalam tag `<a>` dengan kelas `link-card`. 
-- Pastikan atribut `href` diisi dengan tautan tujuan.
-- Atribut `data-category` digunakan untuk sistem filter (misal: `daftar`, `panduan`, `media`). Pastikan sesuai dengan nama kategori yang ada.
+### 3. Mengubah Tautan (Link)
+Buka `index.html` dan cari elemen `<a class="link-card ...">`. 
+- Ubah atribut `href` dengan link tujuanmu (Grup WA, Google Form pendaftaran, Google Drive buku panduan, dll).
+- Jika ada tautan yang sudah tidak diperlukan, kamu cukup menghapus blok elemen `<a>` tersebut dari `index.html`.
+
+### 4. Mengubah Kontak Narahubung & Sosial Media
+Di bagian paling bawah `index.html`:
+- Narahubung: Cari tautan `href="https://wa.me/..."` dan ubah nomor serta nama jika panitia berganti.
+- Email: Cari teks `mailto:` pada tautan email dan perbarui jika alamat email berubah.
+
+### 5. localhost
+jalankan Python server:
+```bash
+python -m http.server 8000
+```
+Buka browser ke `http://localhost:8000`.
